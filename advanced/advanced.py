@@ -1,22 +1,19 @@
-import turtle
-
-window = turtle.Screen()
+from functools import reduce
 
 
-def square(side):
-    for _ in range(4):
-        turtle.forward(side)
-        turtle.left(90)
+def evaluate(coefficients, x):
+    formula = list(map(lambda coef, i: coef * x ** i, coefficients, range(len(coefficients)-1, -1, -1)))
+    return reduce(lambda num1, num2: num1 + num2, formula, 0)
 
 
-def figure(side, count):
-    for _ in range(count):
-        square(side)
-        turtle.left(360 / count)
+def evaluate1(coefficients, x):
+    res = 0
+    for i in range(len(coefficients)):
+        res += coefficients[i] * x ** (len(coefficients) - i - 1)
+    return res
 
 
-side, count = int(input()), int(input())
+coefficients, x = [int(i) for i in input().split()], int(input())
 
-figure(side, count)
-
-window.mainloop()  # не даст закрыть окно
+print(evaluate(coefficients, x))
+print(evaluate1(coefficients, x))
