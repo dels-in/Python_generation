@@ -58,3 +58,4 @@ part4_1/task3/task3.py
 part4_1/task5/task5.py
 part4_1/task7/task7.py
 part4_1/task8/task8.py
+part4_2/task3/task3.py
